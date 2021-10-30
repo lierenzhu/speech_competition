@@ -20,15 +20,28 @@ class SpeechManager {
 
 public:
     SpeechManager();
+
     ~SpeechManager();
+
     void showMenu();
+
     void exitSystem();
+
     void initSpeech();
+
     void createSpeaker();
+
     void startSpeech();
+
     void speechDraw();
+
     void speechContest();
+
     void showScore();
+
+    void saveRecord();
+
+    void loadRecord();
 
 private:
     vector<int> v1;
@@ -36,6 +49,18 @@ private:
     vector<int> vWin;
     map<int, Speaker> speaker;
     int index;
+    bool fileIsEmpty;
+    map<int, vector<string> > record;
+public:
+    const map<int, vector<string>> &getRecord() const;
+
+    void setRecord(const map<int, vector<string>> &record);
+
+public:
+    bool isFileIsEmpty() const;
+
+    void setFileIsEmpty(bool fileIsEmpty);
+
 public:
     int getIndex() const;
 
