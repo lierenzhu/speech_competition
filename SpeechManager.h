@@ -43,6 +43,8 @@ public:
 
     void loadRecord();
 
+    void showRecord();
+
 private:
     vector<int> v1;
     vector<int> v2;
@@ -54,19 +56,18 @@ private:
 public:
     const map<int, vector<string>> &getRecord() const;
 
-    void setRecord(const map<int, vector<string>> &record);
+    void setRecord(map<int, vector<string> > &record);
 
-public:
+    void setRecord(pair<int, vector<string> > record);
+
     bool isFileIsEmpty() const;
 
     void setFileIsEmpty(bool fileIsEmpty);
 
-public:
     int getIndex() const;
 
     void setIndex(int index);
 
-public:
     const vector<int> &getV1() const;
 
     void setV1(const vector<int> &v1);

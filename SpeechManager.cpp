@@ -246,14 +246,46 @@ void SpeechManager::loadRecord()
     ifs.putback(c);
 
     string data;
+    int index = 0;
     while (ifs >> data)
     {
         cout << data << endl;
+        int pos = -1;
+        int start = 0;
+        vector<string> v;
 
+        while (true)
+        {
+            pos = data.find(',', start);
+            if (pos == -1)
+            {
+                break;
+            }
+            string temp = data.substr(start, pos - start);
+//            cout << temp << endl;
+            v.push_back(temp);
+            start = pos + 1;
+        }
+        this->setRecord(make_pair(index, v));
+        index++;
     }
     ifs.close();
+    for (map<int, vector<string> >::iterator it = record.begin(); it != record.end(); it++)
+    {
+        cout << it->first << "冠军:" << it->second[0] << " 分数：" << it->second[1] << endl;
+    }
+}
 
-
+void SpeechManager::showRecord()
+{
+    for (int i = 0; i < this->record.size(); ++i)
+    {
+        cout << "第" << i + 1 << "届" <<
+             "冠军编号：" << this->record[i][0] << "得分：" << this->record[i][1] << " "
+                                                                             "亚军编号：" << this->record[i][2] << "得分：" << this->record[i][3] << " "
+                                                                                                                                             "季军编号：" << this->record[i][4] << "得分："
+             << this->record[i][5] << endl;
+    }
 }
 
 const vector<int> &SpeechManager::getV1() const
@@ -321,7 +353,12 @@ const map<int, vector<string>> &SpeechManager::getRecord() const
     return record;
 }
 
-void SpeechManager::setRecord(const map<int, vector<string>> &record)
+void SpeechManager::setRecord(map<int, vector<string>> &record)
 {
     SpeechManager::record = record;
+}
+
+void SpeechManager::setRecord(pair<int, vector<string>> record)
+{
+    SpeechManager::record.insert(record);
 }

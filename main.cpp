@@ -24,6 +24,7 @@ int main() {
                 speechManager.startSpeech();
                 break;
             case 2:
+                speechManager.showRecord();
                 break;
             case 3:
                 break;
