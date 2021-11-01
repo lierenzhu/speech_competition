@@ -7,6 +7,7 @@ using namespace std;
 
 int main() {
 //    std::cout << "Hello, World!" << std::endl;
+    srand((unsigned int) time(NULL));
     SpeechManager speechManager;
 //    for(map<int,Speaker>::iterator it=speechManager.getSpeaker().begin();it!=speechManager.getSpeaker().end();it++)
 //    {
@@ -27,6 +28,7 @@ int main() {
                 speechManager.showRecord();
                 break;
             case 3:
+                speechManager.cleanRecord();
                 break;
             case 0:
                 speechManager.exitSystem();

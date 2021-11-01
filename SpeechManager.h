@@ -45,6 +45,8 @@ public:
 
     void showRecord();
 
+    void cleanRecord();
+
 private:
     vector<int> v1;
     vector<int> v2;
